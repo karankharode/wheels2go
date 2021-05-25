@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wheels2go/constants.dart';
+import 'package:wheels2go/constants/colors.dart';
 import 'package:wheels2go/data.dart';
 
 class BookCar extends StatefulWidget {

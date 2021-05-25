@@ -1,6 +1,6 @@
 import 'package:wheels2go/car_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:wheels2go/constants.dart';
+import 'package:wheels2go/constants/colors.dart';
 import 'package:wheels2go/data.dart';
 import 'package:wheels2go/book_car.dart';
 

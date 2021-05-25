@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wheels2go/constants.dart';
+import 'package:wheels2go/constants/colors.dart';
 import 'package:wheels2go/data.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wheels2go/car_widget.dart';
