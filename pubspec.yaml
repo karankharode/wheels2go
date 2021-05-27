@@ -47,7 +47,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
+    - assets/images/
     - assets/Bajaj CT100/
     - assets/Bajaj Pulsar 150/
     - assets/Bajaj Pulsar NS200/
