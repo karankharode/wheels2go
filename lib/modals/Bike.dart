@@ -148,4 +148,5 @@ List<Bike> getCarList() {
       'assets/Triumph Street Triple/triumph-street-triple4.jpg',
       'assets/Triumph Street Triple/triumph-street-triple5.jpg',
     ]), 
+   ];
 }
