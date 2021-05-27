@@ -1,15 +1,17 @@
-import 'package:wheels2go/car_widget.dart';
+import 'package:wheels2go/bike_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels2go/constants/colors.dart';
 import 'package:wheels2go/data.dart';
-import 'package:wheels2go/book_car.dart';
+import 'package:wheels2go/book_bike.dart';
 
-class AvailableCars extends StatefulWidget {
+import 'package:wheels2go/models/Bike.dart';
+
+class AvailableBikes extends StatefulWidget {
   @override
-  _AvailableCarsState createState() => _AvailableCarsState();
+  _AvailableBikesState createState() => _AvailableBikesState();
 }
 
-class _AvailableCarsState extends State<AvailableCars> {
+class _AvailableBikesState extends State<AvailableBikes> {
   List<Filter> filters = getFilterList();
   Filter selectedFilter;
 
@@ -59,7 +61,7 @@ class _AvailableCarsState extends State<AvailableCars> {
                 height: 16,
               ),
               Text(
-                "Available Cars (" + getCarList().length.toString() + ")",
+                "Available Cars (" + getBikeList().length.toString() + ")",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 36,
@@ -76,15 +78,16 @@ class _AvailableCarsState extends State<AvailableCars> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
-                  children: getCarList().map((item) {
+                  children: getBikeList().map((item) {
                     return GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => BookCar(car: item)),
+                            MaterialPageRoute(
+                                builder: (context) => BookBike(bike: item)),
                           );
                         },
-                        child: buildCar(item, null));
+                        child: buildBike(item, null));
                   }).toList(),
                 ),
               ),
@@ -156,7 +159,8 @@ class _AvailableCarsState extends State<AvailableCars> {
           style: TextStyle(
             color: selectedFilter == filter ? kPrimaryColor : Colors.grey[300],
             fontSize: 16,
-            fontWeight: selectedFilter == filter ? FontWeight.bold : FontWeight.normal,
+            fontWeight:
+                selectedFilter == filter ? FontWeight.bold : FontWeight.normal,
           ),
         ),
       ),
