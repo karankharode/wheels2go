@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:wheels2go/constants/colors.dart';
-import 'package:wheels2go/data.dart';
+import 'package:wheels2go/models/Bike.dart';
 
-class BookCar extends StatefulWidget {
-  final Car car;
+class BookBike extends StatefulWidget {
+  final Bike bike;
 
-  BookCar({@required this.car});
+  BookBike({@required this.bike});
 
   @override
-  _BookCarState createState() => _BookCarState();
+  _BookBikeState createState() => _BookBikeState();
 }
 
-class _BookCarState extends State<BookCar> {
+class _BookBikeState extends State<BookBike> {
   int _currentImage = 0;
 
   List<Widget> buildPageIndicator() {
     List<Widget> list = [];
-    for (var i = 0; i < widget.car.images.length; i++) {
+    for (var i = 0; i < widget.bike.images.length; i++) {
       list.add(buildIndicator(i == _currentImage));
     }
     return list;
@@ -127,7 +127,7 @@ class _BookCarState extends State<BookCar> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         child: Text(
-                          widget.car.model,
+                          widget.bike.model,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 36,
@@ -141,7 +141,7 @@ class _BookCarState extends State<BookCar> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         child: Text(
-                          widget.car.brand,
+                          widget.bike.brand,
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
@@ -160,13 +160,13 @@ class _BookCarState extends State<BookCar> {
                                 _currentImage = page;
                               });
                             },
-                            children: widget.car.images.map((path) {
+                            children: widget.bike.images.map((path) {
                               return Container(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 16,
                                 ),
                                 child: Hero(
-                                  tag: widget.car.model,
+                                  tag: widget.bike.model,
                                   child: Image.asset(
                                     path,
                                     fit: BoxFit.scaleDown,
@@ -177,7 +177,7 @@ class _BookCarState extends State<BookCar> {
                           ),
                         ),
                       ),
-                      widget.car.images.length > 1
+                      widget.bike.images.length > 1
                           ? Container(
                               margin: EdgeInsets.symmetric(vertical: 16),
                               height: 30,
@@ -329,7 +329,7 @@ class _BookCarState extends State<BookCar> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
-                    "Book this car",
+                    "Rent Bike",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
