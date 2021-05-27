@@ -47,8 +47,25 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
-
+    - assets/
+    - assets/Bajaj CT100/
+    - assets/Bajaj Pulsar 150/
+    - assets/Bajaj Pulsar NS200/
+    - assets/Benling India Falcon/
+    - assets/Hero Electric Dash/
+    - assets/Hero HF Deluxe/
+    - assets/Hero Super Splendor/
+    - assets/Honda Activa 6G/
+    - assets/Honda Shine/
+    - assets/KTM 125 Duke/
+    - assets/Royal Enfield Bullet 350/
+    - assets/Royal Enfield Classic 350/
+    - assets/Suzuki Access 125/
+    - assets/Suzuki Gixxer SF/
+    - assets/Triumph Street Triple/
+    - assets/TVS Apache RTR 160/
+    - assets/Yamaha FZ-Fi Version 3.0/
+    - assets/Yamaha YZF R15 V3/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
