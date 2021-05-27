@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:wheels2go/constants/colors.dart';
 import 'package:wheels2go/data.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wheels2go/car_widget.dart';
+import 'package:wheels2go/bike_widget.dart';
 import 'package:wheels2go/dealer_widget.dart';
-import 'package:wheels2go/available_cars.dart';
-import 'package:wheels2go/book_car.dart';
+import 'package:wheels2go/available_bikes.dart';
+import 'package:wheels2go/book_bike.dart';
+import 'package:wheels2go/models/Bike.dart';
 
 class Showroom extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _ShowroomState extends State<Showroom> {
   List<NavigationItem> navigationItems = getNavigationItemList();
   NavigationItem selectedItem;
 
-  List<Car> cars = getCarList();
+  List<Bike> bikes = getBikeList();
   List<Dealer> dealers = getDealerList();
 
   @override
@@ -151,7 +152,8 @@ class _ShowroomState extends State<Showroom> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AvailableCars()),
+                          MaterialPageRoute(
+                              builder: (context) => AvailableBikes()),
                         );
                       },
                       child: Padding(
@@ -173,7 +175,7 @@ class _ShowroomState extends State<Showroom> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Available Cars",
+                                    "Available Bikes",
                                     style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
@@ -280,15 +282,15 @@ class _ShowroomState extends State<Showroom> {
 
   List<Widget> buildDeals() {
     List<Widget> list = [];
-    for (var i = 0; i < cars.length; i++) {
+    for (var i = 0; i < bikes.length; i++) {
       list.add(GestureDetector(
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BookCar(car: cars[i])),
+              MaterialPageRoute(builder: (context) => BookBike(bike: bikes[i])),
             );
           },
-          child: buildCar(cars[i], i)));
+          child: buildBike(bikes[i], i)));
     }
     return list;
   }
