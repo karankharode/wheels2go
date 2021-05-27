@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wheels2go/data.dart';
+import 'package:wheels2go/models/Bike.dart';
 import 'package:wheels2go/constants/colors.dart';
 
-Widget buildCar(Car car, int index) {
+Widget buildBike(Bike bike, int index) {
   return Container(
     decoration: BoxDecoration(
       color: Colors.white,
@@ -11,7 +11,8 @@ Widget buildCar(Car car, int index) {
       ),
     ),
     padding: EdgeInsets.all(16),
-    margin: EdgeInsets.only(right: index != null ? 16 : 0, left: index == 0 ? 16 : 0),
+    margin: EdgeInsets.only(
+        right: index != null ? 16 : 0, left: index == 0 ? 16 : 0),
     width: 220,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,7 +29,7 @@ Widget buildCar(Car car, int index) {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               child: Text(
-                car.condition,
+                bike.condition,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 12,
@@ -45,9 +46,9 @@ Widget buildCar(Car car, int index) {
           height: 110,
           child: Center(
             child: Hero(
-              tag: car.model,
+              tag: bike.model,
               child: Image.asset(
-                car.images[0],
+                bike.images[0],
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -57,14 +58,14 @@ Widget buildCar(Car car, int index) {
           height: 14,
         ),
         Text(
-          car.model,
+          bike.model,
           style: TextStyle(fontSize: 18),
         ),
         SizedBox(
           height: 4,
         ),
         Text(
-          car.brand,
+          bike.brand,
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -73,9 +74,9 @@ Widget buildCar(Car car, int index) {
         ),
         Text(
           "per " +
-              (car.condition == "Daily"
+              (bike.condition == "Daily"
                   ? "day"
-                  : car.condition == "Weekly"
+                  : bike.condition == "Weekly"
                       ? "week"
                       : "month"),
           style: TextStyle(
