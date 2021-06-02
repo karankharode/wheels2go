@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wheels2go/constants/colors.dart';
 import 'package:wheels2go/models/Bike.dart';
+import 'package:wheels2go/schedule.dart';
 
 class BookBike extends StatefulWidget {
   final Bike bike;
@@ -193,16 +194,16 @@ class _BookBikeState extends State<BookBike> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             buildPricePerPeriod(
-                              "12",
-                              "4.350",
+                              "90",
+                              ((widget.bike.pricePerDay) * 90).toString(),
                               true,
                             ),
                             SizedBox(
                               width: 16,
                             ),
                             buildPricePerPeriod(
-                              "6",
-                              "4.800",
+                              "30",
+                              ((widget.bike.pricePerDay) * 30).toString(),
                               false,
                             ),
                             SizedBox(
@@ -210,7 +211,7 @@ class _BookBikeState extends State<BookBike> {
                             ),
                             buildPricePerPeriod(
                               "1",
-                              "5.100",
+                              (widget.bike.pricePerDay).toString(),
                               false,
                             ),
                           ],
@@ -236,7 +237,7 @@ class _BookBikeState extends State<BookBike> {
                       child: Text(
                         "SPECIFICATIONS",
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey[400],
                         ),
@@ -253,12 +254,19 @@ class _BookBikeState extends State<BookBike> {
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         children: [
-                          buildSpecificationCar("Color", "White"),
-                          buildSpecificationCar("Gearbox", "Automatic"),
-                          buildSpecificationCar("Seat", "4"),
-                          buildSpecificationCar("Motor", "v10 2.0"),
-                          buildSpecificationCar("Speed (0-100)", "3.2 sec"),
-                          buildSpecificationCar("Top Speed", "121 mph"),
+                          buildSpecificationBike("Brand", widget.bike.brand),
+                          buildSpecificationBike("Model", widget.bike.model),
+                          buildSpecificationBike(
+                              "Fuel Type", widget.bike.fuelType),
+                          buildSpecificationBike(
+                              "Gear Box", widget.bike.gearBox),
+                          buildSpecificationBike(
+                              "Engine Disp", widget.bike.engineDispl),
+                          buildSpecificationBike(
+                              "Tyre Type", widget.bike.tyreType),
+                          buildSpecificationBike(
+                              "Mileage", widget.bike.mileage),
+                          buildSpecificationBike("Start", widget.bike.starting),
                         ],
                       ),
                     ),
@@ -283,7 +291,7 @@ class _BookBikeState extends State<BookBike> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "12 Month",
+                  "90 Days",
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -296,7 +304,7 @@ class _BookBikeState extends State<BookBike> {
                 Row(
                   children: [
                     Text(
-                      "USD 4,350",
+                      widget.bike.pricePerDay.toString(),
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -307,7 +315,7 @@ class _BookBikeState extends State<BookBike> {
                       width: 8,
                     ),
                     Text(
-                      "per month",
+                      "per day",
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 14,
@@ -325,7 +333,7 @@ class _BookBikeState extends State<BookBike> {
                   Radius.circular(15),
                 ),
               ),
-              child: Center(
+              child: ElevatedButton(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
@@ -337,6 +345,7 @@ class _BookBikeState extends State<BookBike> {
                     ),
                   ),
                 ),
+                onPressed: () {},
               ),
             ),
           ],
@@ -345,7 +354,7 @@ class _BookBikeState extends State<BookBike> {
     );
   }
 
-  Widget buildPricePerPeriod(String months, String price, bool selected) {
+  Widget buildPricePerPeriod(String days, String price, bool selected) {
     return Expanded(
       child: Container(
         height: 110,
@@ -364,29 +373,29 @@ class _BookBikeState extends State<BookBike> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              months + " Month",
+              days + " Day",
               style: TextStyle(
                 color: selected ? Colors.white : Colors.black,
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Expanded(
-              child: Container(),
+            SizedBox(
+              height: 8,
+            ),
+            Text(
+              "Rs.",
+              style: TextStyle(
+                color: selected ? Colors.white : Colors.black,
+                fontSize: 16,
+              ),
             ),
             Text(
               price,
               style: TextStyle(
                 color: selected ? Colors.white : Colors.black,
-                fontSize: 24,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              "USD",
-              style: TextStyle(
-                color: selected ? Colors.white : Colors.black,
-                fontSize: 14,
               ),
             ),
           ],
@@ -395,9 +404,9 @@ class _BookBikeState extends State<BookBike> {
     );
   }
 
-  Widget buildSpecificationCar(String title, String data) {
+  Widget buildSpecificationBike(String title, String data) {
     return Container(
-      width: 130,
+      width: 170,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
