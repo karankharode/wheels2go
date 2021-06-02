@@ -36,25 +36,102 @@ class _ShowroomState extends State<Showroom> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         brightness: Brightness.light,
+        iconTheme: IconThemeData(color: Colors.black, size: 28),
         title: Text(
           "Wheels 2 Go",
           style: GoogleFonts.muli(
-            fontSize: 28,
+            fontSize: 32,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
-        centerTitle: false,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Icon(
-              Icons.menu,
-              color: Colors.black,
-              size: 28,
+        centerTitle: true,
+      ),
+      drawer: Drawer(
+        child: ListView(children: <Widget>[
+          DrawerHeader(
+              child: Container(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 75,
+                      width: 75,
+                      alignment: Alignment.bottomLeft,
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(40)),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text("User Name or Email",
+                        style: GoogleFonts.muli(
+                          fontSize: 20,
+                          color: Colors.white,
+                        )),
+                  ],
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+              )),
+          ListTile(
+            leading: Icon(
+              Icons.account_box,
+              size: 24,
             ),
-          )
-        ],
+            title: Text(
+              "My Account",
+              style: GoogleFonts.muli(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.contact_support, size: 24),
+            title: Text(
+              "Contact Us",
+              style: GoogleFonts.muli(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.details,
+              size: 24,
+            ),
+            title: Text(
+              "About",
+              style: GoogleFonts.muli(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.settings, size: 24),
+            title: Text(
+              "Settings",
+              style: GoogleFonts.muli(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text(
+              "Logout",
+              style: GoogleFonts.muli(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ]),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -117,25 +194,28 @@ class _ShowroomState extends State<Showroom> {
                               color: Colors.grey[400],
                             ),
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                "view all",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () {},
+                            child: Row(
+                              children: [
+                                Text(
+                                  "view all",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: kPrimaryColor,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 12,
                                   color: kPrimaryColor,
                                 ),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                size: 12,
-                                color: kPrimaryColor,
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -263,19 +343,6 @@ class _ShowroomState extends State<Showroom> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: Container(
-        height: 70,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-            )),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: buildNavigationItems(),
-        ),
       ),
     );
   }
